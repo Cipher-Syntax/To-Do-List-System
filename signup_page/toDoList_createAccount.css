@@ -1,0 +1,90 @@
+*{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Poppins;
+    background-color: #D0D0D0;
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: #323232;
+    color: #D0D0D0;
+    text-align: center;
+    height: 250px;
+    width: 100%;
+}
+#logo{
+    padding-top: 50px;
+    font-family: Poppins;
+    font-size: 48px;
+    font-weight: bold;
+}
+#catchphrase{
+    font-family: Poppins;
+    font-size: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#create-account{
+    margin-top: 30px;
+    font-family: Poppins;
+    font-size: 40px;
+    color: #222222;
+    text-align: center;
+    text-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5);
+}
+.user-registration{
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 450px;
+}
+.user-registration input{
+    padding: 9px;
+    margin-bottom: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #D0D0D0;
+    outline: none;
+}
+.firstname{
+    width: 200px;
+    float: left;
+}
+.lastname{
+    width: 200px;
+    float: right;
+}
+#createAccount-btn{
+    max-width: 250px;
+    border: 1px solid #5B5B5B;
+    background-color: #5B5B5B;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 0;
+}
+.links{
+    padding: 12px;
+    text-align: center;
+    font-size: 10px;
+    padding-bottom: 50px;
+}
+.links a{
+    text-decoration: none;
+    font-size: 10px;
+    color: #222222;
+}
+#create{
+    font-weight: bold;
+}
+#create:hover{
+    text-decoration: underline;
+}
+#forgot:hover{
+    text-decoration: underline;
+}

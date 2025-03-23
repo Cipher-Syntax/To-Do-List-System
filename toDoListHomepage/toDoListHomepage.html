@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List Homepage</title>
+    <link rel="stylesheet" href="toDoListHomepage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <header>
+        <div class="left-side">
+            <i class='bx bx-menu menu-icon' onclick="toggleSidebar()"></i>
+            <h1 id="logo">Plan-It</h1>
+        </div>
+        
+        <div class="right-side">
+            <div class="notification-bell">
+                <i class='bx bxs-bell'></i>
+            </div>
+            
+            <div class="user-profile">
+                <img src="../images/cipher.jpg" alt="user-profile" id="user-picture">
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-btn">
+            <i class='bx bx-menu' id="menu-icon"></i>
+        </button>
+        <ul class="sidebar-links">
+            <li onclick="showView('plan-today')" class="sidebar-active"><i class='bx bx-calendar-check'></i> Plan Today</li>
+            <li onclick="showView('weekly-priority')"><i class='bx bx-star'></i> Weekly Priority</li>
+            <li onclick="showView('upcoming-task')"><i class='bx bx-time'></i> Upcoming Task</li>
+            <li onclick="showView('all-contents')"><i class='bx bx-list-ul'></i> All Contents</li>
+        </ul>
+        <button class="logout-btn">Logout</button>
+    </div>
+    
+    <main>
+        <div class="hero-container">
+            <div class="text">
+                <h2 class="welcome-message">Welcome To Plan-It</h2>
+                <p class="catchphrase">"Conquer & organized your task:
+                Plan-It - Where it got your back no matter where you're at"</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="svg-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 200 200" fill="none">
+            <path d="M99.9167 175C89.5723 175 79.85 173.028 70.75 169.083C61.65 165.133 53.7195 159.786 46.9584 153.042C40.1973 146.297 34.85 138.367 30.9167 129.25C26.9834 120.133 25.0112 110.392 25 100.025C24.9889 89.6583 26.9584 79.9083 30.9084 70.775C34.8584 61.6417 40.2028 53.7 46.9417 46.95C53.6806 40.2 61.6167 34.8528 70.75 30.9083C79.8834 26.9639 89.6334 24.9945 100 25C108.528 25 116.597 26.3195 124.208 28.9583C131.819 31.5972 138.761 35.2778 145.033 40L139.033 46.2C133.544 42.1222 127.506 38.9556 120.917 36.7C114.328 34.4556 107.356 33.3333 100 33.3333C81.5278 33.3333 65.7973 39.8278 52.8084 52.8167C39.8195 65.8056 33.3278 81.5333 33.3334 100C33.3389 118.467 39.8334 134.197 52.8167 147.192C65.8 160.186 81.5278 166.678 100 166.667C104.872 166.667 109.606 166.144 114.2 165.1C118.794 164.05 123.194 162.6 127.4 160.75L133.65 167.05C128.594 169.617 123.236 171.583 117.575 172.95C111.914 174.317 106.031 175 99.925 175M162.5 162.5V137.5H137.5V129.167H162.5V104.167H170.833V129.167H195.833V137.5H170.833V162.5H162.5ZM88.0167 132.567L58.3667 102.917L64.2667 97.0167L88.0167 120.767L169.1 39.6333L175 45.525L88.0167 132.567Z" fill="#F26D20"/>
+        </svg>
+    </div>
+
+    <!-- Plan Today -->
+    <div class="container" id="plan-today-view">
+        <h1>Plan Today</h1>
+        <div class="js-todo-list todo-grid"></div>
+        <button class="add-task-btn" onclick="openTaskPopup()">➕ Add Task</button>
+    </div>
+    
+    <!-- Weekly Priority -->
+    <div class="container" id="weekly-priority-view" style="display:none;">
+        <h1>Weekly Priority</h1>
+        <div class="js-weekly-list todo-grid"></div>
+        <button class="add-task-btn" onclick="openTaskPopup('weekly')">➕ Add Priority Task</button>
+    </div>
+    
+    <!-- Upcoming Task -->
+    <div class="container" id="upcoming-task-view" style="display:none;">
+        <h1>Upcoming Task</h1>
+        <div class="js-upcoming-list todo-grid"></div>
+        <button class="add-task-btn" onclick="openTaskPopup('upcoming')">➕ Add Upcoming Task</button>
+    </div>
+    
+    <!-- All Contents View -->
+    <div class="all-contents" id="all-contents-view">
+        <h1>All Contents</h1>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search tasks..." id="search-input">
+            <button onclick="searchTasks()"><i class='bx bx-search'></i></button>
+        </div>
+        
+        <div class="view-options">
+            <span class="view-option active" onclick="changeView('grid')"><i class='bx bx-grid'></i></span>
+            <span class="view-option" onclick="changeView('list')"><i class='bx bx-list-ul'></i></span>
+        </div>
+        
+        <div class="task-category">
+            <h3>Plan Today</h3>
+            <ul class="task-list" id="all-today-tasks"></ul>
+        </div>
+        
+        <div class="task-category">
+            <h3>Weekly Priority</h3>
+            <ul class="task-list" id="all-weekly-tasks"></ul>
+        </div>
+        
+        <div class="task-category">
+            <h3>Upcoming Task</h3>
+            <ul class="task-list" id="all-upcoming-tasks"></ul>
+        </div>
+    </div>
+    
+    <div class="popup-overlay" onclick="closeTaskPopup()"></div>
+    <div class="popup-container">
+        <div class="popup">
+            <h2 id="popup-title">Plan Today</h2>
+            <input placeholder="Task name..." class="js-todoName-input" onkeypress="handleKeyPress(event)">
+            <input type="date" class="js-todoDate-input" onkeypress="handleKeyPress(event)">
+            <div>
+                <button onclick="addToDO()" class="check-btn">✅</button>
+                <button onclick="closeTaskPopup()" class="close-btn">❌</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="toDoListHomepage.js"></script>
+</body>
+</html>
